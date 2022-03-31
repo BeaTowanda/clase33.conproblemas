@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="titulo">Editar Película</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+      </figure>
+    <h1 class="titulo">Película a MODIFICAR  <%= Movie.title %></h1>
+    <section class="formulario">
+        <form action="/movies/update/<%= Movie.id %>" method="POST"> 
+
+            <label for="title"></label>
+            <p id="actualiza" >Titulo : <spam><%= Movie.title %></spam></p>
+            <p>Modifique Título</p>             
+            <p id="actualiza"><input type="text" name="title" id="title" value="<%=Movie.title %>"></p>
+            <% if(locals.errors && locals.errors.title){ %>
+                <span id="errorMapped"> <%= errors.title.msg  %> </span>
+              <% } %> 
+            <br/>
+            <p id="actualiza">Rating : <spam><%= Movie.rating %></spam></p>
+            <p>Modifique Rating</p>
+            <label for="rating"></label>
+            <p><input type="number" name="rating" id="rating" value="<%= Movie.rating %>" ></p>
+            <% if(locals.errors && locals.errors.rating){ %>
+                <span id="errorMapped"> <%= errors.reting.msg  %> </span>
+              <% } %> 
+            <br/>
+            <p id="actualiza">Awards : <spam><%= Movie.awards %></spam></p>
+            <p>Modifique Awards</p>
+            <label for="awards"></label>
+            <p><input type="number" name="awards" id="awards" value="<%= Movie.awards %>" ></p>
+            <% if(locals.errors && locals.errors.awards){ %>
+                <span id="errorMapped"> <%= errors.awards.msg  %> </span>
+              <% } %> 
+            <br/>
+            <p id="actualiza">Fecha de Estreno : <spam><%= Movie.release_date %></spam></p>
+            <p>Modifique fecha de Estreno</p>
+            <label for="release_date"></label>
+            <p><input type="date" name="release_date" id="release_date" value="<%= Movie.release_date %>"></p>
+            <% if(locals.errors && locals.errors.release_date){ %>
+                <span id="errorMapped"> <%= errors.release_date.msg  %> </span>
+              <% } %> 
+            <br/>
+            <p id="actualiza">Duración : <spam><%= Movie.length %></spam></p>
+            <p>Modifique DURACION</p>
+            <label for="length">Length </label>
+            <p><input type="number" name="length" id="" value="<%= Movie.length %>" ></p>
+            <% if(locals.errors && locals.errors.length){ %>
+                <span id="errorMapped"> <%= errors.length.msg  %> </span>
+              <% } %> 
+            <br>
+            <p>Modifique GENERO</p>
+            <label for="genre_id">Length </label>
+            <% if (MOvie.genre_id != null) {%>
+            <p><input type="number" name="genre_id" id="" value="<%= genre_id %><%=genre_name %>" ></p>
+            <%}%>
+            <% if (Movie.genre_id == null) {%>
+                <p><input type="number" name="genre_id" id="" value="ingrese código del género" ></p>
+            <%}%>  
+            <% if(locals.errors && locals.errors.length){ %>
+                <span id="errorMapped"> <%= errors.length.msg  %> </span>
+              <% } %> 
+            <br>
+            <p> <button class="botonAgregar" type="submit">Actualizar</button>         
+        </form>
+        <br/>
+        <p><a id="vuelvo" href="/movies">Listado de Películas</a></p>
+        <p><a href="/" id="vuelvo">Volver a Pagina Principal</a></p>
+    </section>
+</body>
